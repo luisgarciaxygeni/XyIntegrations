@@ -1,0 +1,84 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI Push GHA 
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  #push: #branch github.ref
+  #  branches: [ main ]
+  #pull_request: #branch github.head_ref
+  #  branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo ${{ secrets.CHECKMARX_USER }} Hello, world!
+
+      ####################################
+      # Build a new Cxflow image adding mvn
+      ####################################
+      - name: Building CxFlow image with mvn
+        run: |
+          docker build -f ./Dockerfile . -t lgv_cxflow
+          docker images
+      
+      ####################################
+      # Runs a CxSAST scan through CxFlow 
+      ####################################
+      - name: Checkmarx CxFlow Action
+        #uses: luisgarciacheckmarx/checkmarx-cxflow-github-action@v1.2
+        uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4
+        with:
+          project: ${{ github.repository }}-PR-GHA
+          team: "/CxServer/Team1/Team3"
+          checkmarx_url: ${{ secrets.CHECKMARX_URL }}    # To be stored in GitHub Secrets.
+          checkmarx_username: ${{ secrets.CHECKMARX_USER }} # To be stored in GitHub Secrets.
+          checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}  # To be stored in GitHub Secrets.
+          checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          sca_api_url: https://api-sca.checkmarx.net
+          sca_app_url: https://sca.checkmarx.net
+          sca_access_control_url: https://platform.checkmarx.net
+          sca_tenant: ps-team-emea
+          sca_username: ${{ secrets.SCA_USERNAME }}
+          sca_password: ${{ secrets.SCA_PASSWORD }}
+          incremental: false
+          break_build: false
+          scanners: sca
+          bug_tracker: WAIT # Valida values: GitHub (for PUll as GH Issues), GITHUBPULL (for PR as comments in PR ), Sarif (GitHub’s Security Tab)
+          params: --namespace=${{ github.repository_owner }} \
+                  --repo-name=${{ github.event.repository.name }} \
+                  --branch=${{ github.ref }} \
+                  --merge-id=${{ github.event.number }} \
+                  --cx-flow.zip-exclude=.\.*mvn\/.*,.*\.java \
+                  --cx-flow.filterSeverity=Low \
+                  --cx-flow.filterCategory \
+                  --sca.filter-severity=Low \
+                  --sca.include-sources=false \
+                  --sca.enable-sca-resolver=true \
+                  --sca.path-to-sca-resolver=/app \
+                  --cx-flow.thresholds.high=0 --cx-flow.thresholds.medium=1 \
+                  --logging.level.com.checkmarx=DEBUG \
+                  --sca.sca-resolver-add-parameters="--scan-tags pepe --log-level Debug" \
+                  #--sca.sca-resolver-add-parameters="--cxserver ${{ secrets.CHECKMARX_URL }} --cxuser ${{ secrets.CHECKMARX_USER }} --cxpassword ${{ secrets.CHECKMARX_PASSWORD }} --cxprojectid 130 --sast-result-path /app/lgv_results --log-level Debug" \
+                  # --cx-flow.zip-exclude=.*\.java \
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: cx.sarif
