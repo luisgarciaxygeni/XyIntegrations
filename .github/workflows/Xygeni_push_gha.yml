@@ -57,7 +57,7 @@ jobs:
 
       # Runs Xygeni-Scanner
       - name: Xygeni-Scanner
-        uses: xygeni/xygeni-action@v2.1
+        uses: xygeni/xygeni-action@77ac75ae0cee5d6df93e8e449eb39ec208f2d3b3 #v2.1
         id: Xygeni-Scanner
         with:
         
