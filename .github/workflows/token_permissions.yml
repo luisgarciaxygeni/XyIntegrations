@@ -13,7 +13,11 @@ on:
   workflow_dispatch:
 
 
-permissions: write-all
+#permissions: write-all
+
+permissions:
+  issues: write
+  pull-requests: write
 
 #permissions:
 #  actions: read|write|none
