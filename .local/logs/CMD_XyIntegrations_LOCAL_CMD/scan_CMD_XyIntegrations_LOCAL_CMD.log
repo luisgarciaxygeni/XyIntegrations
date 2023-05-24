@@ -1,0 +1,54 @@
+2023-05-24 11:11:56.427 [main] INFO  com.depsdoctor.depsscanner.services.scanner.ConfigApi - No resource found for service 'downloadConf'
+2023-05-24 11:11:56.503 [main] INFO  xygeni-scanner - Starting deps scan...
+2023-05-24 11:11:57.436 [main] INFO  com.depsdoctor.depsscanner.core.DefaultScanner - Analyzers initialized. Duration = 0.0093798s
+2023-05-24 11:11:57.436 [main] INFO  com.depsdoctor.depsscanner.core.DefaultScanner - Scanning files under directory C:\LGV\src\XyIntegrations\XyIntegrations\src
+2023-05-24 11:11:57.501 [main] INFO  com.depsdoctor.depsscanner.core.DefaultScanner - Scanned 4/38 files under directory C:\LGV\src\XyIntegrations\XyIntegrations\src: duration = 0.0543487s
+2023-05-24 11:11:57.502 [main] INFO  com.depsdoctor.depsscanner.analyzer.impl.FileNameAnalyzer - Preparing analyzer FileName Analyzer
+2023-05-24 11:11:57.502 [main] INFO  com.depsdoctor.depsscanner.analyzer.impl.NpmAnalyzer - Preparing analyzer Npm Analyzer
+2023-05-24 11:11:57.502 [main] INFO  com.depsdoctor.depsscanner.analyzer.impl.NpmCmdAnalyzer - Preparing analyzer Npm Command Analyzer
+2023-05-24 11:12:11.831 [main] INFO  com.depsdoctor.depsscanner.analyzer.impl.NpmCmdAnalyzer - Npm detected. Version: 9.5.1
+2023-05-24 11:12:14.077 [main] INFO  com.depsdoctor.depsscanner.core.DefaultScanner - Running FileName Analyzer at phase EvidenceCollection on 4 dependencies
+2023-05-24 11:12:14.086 [main] INFO  com.depsdoctor.depsscanner.core.DefaultScanner - FileName Analyzer complete in 0.0090827s
+2023-05-24 11:12:14.086 [main] INFO  com.depsdoctor.depsscanner.core.DefaultScanner - Running Npm Analyzer at phase EvidenceCollection on 4 dependencies
+2023-05-24 11:12:14.899 [main] INFO  com.depsdoctor.depsscanner.core.DefaultScanner - Npm Analyzer complete in 0.813234s
+2023-05-24 11:12:14.899 [main] INFO  com.depsdoctor.depsscanner.core.DefaultScanner - Running Npm Command Analyzer at phase EvidenceCollection on 10 dependencies
+2023-05-24 11:12:15.499 [pool-4-thread-1] WARN  com.depsdoctor.depsscanner.analyzer.impl.NpmCmdAnalyzer - Cannot process C:\LGV\src\XyIntegrations\XyIntegrations\src\bad_components\bad_1\package.json
+2023-05-24 11:12:15.944 [pool-4-thread-1] WARN  com.depsdoctor.depsscanner.analyzer.impl.NpmCmdAnalyzer - Cannot process C:\LGV\src\XyIntegrations\XyIntegrations\src\misconfigs\Lack_Version_Pinning_npm\bad_1\package.json
+2023-05-24 11:12:16.820 [pool-4-thread-1] WARN  com.depsdoctor.depsscanner.analyzer.impl.NpmCmdAnalyzer - Cannot process C:\LGV\src\XyIntegrations\XyIntegrations\src\misconfigs\Lack_Version_Pinning_npm\bad_2\package.json
+2023-05-24 11:12:16.822 [main] INFO  com.depsdoctor.depsscanner.core.DefaultScanner - Npm Command Analyzer complete in 1.9222589s
+2023-05-24 11:12:16.830 [main] INFO  com.depsdoctor.depsscanner.core.DefaultScanner - Phase postProcess complete. Duration = 0.0073191s
+2023-05-24 11:12:16.885 [main] INFO  com.depsdoctor.depsscanner.core.DefaultScanner - Analyzers terminated. Duration = 0.0551504s
+2023-05-24 11:12:16.885 [main] INFO  com.depsdoctor.depsscanner.core.DefaultScanner - Analysis complete in 19.6413654s
+2023-05-24 11:12:16.982 [main] INFO  xygeni-scanner - Deps scan statistics: {"elapsedTime":"00:00:19.641","files":4,"filesByKind":{"Npm Command Analyzer":3,"Npm Analyzer":1},"dependencies":17,"depsByEcosystem":{"npm":17}}
+2023-05-24 11:12:17.056 [main] INFO  xygeni-scanner - Starting inventory scan...
+2023-05-24 11:12:19.120 [main] INFO  io.xygeni.inventory.scanner.engine.InventoryEngine - Detectors initialized. Duration = 1.5529796s
+2023-05-24 11:12:19.513 [main] INFO  io.xygeni.inventory.scanner.engine.InventoryEngine - Detectors terminated. Duration = 0.0053646s
+2023-05-24 11:12:19.513 [main] INFO  io.xygeni.inventory.scanner.engine.InventoryEngine - Analysis complete in 2.0033828s
+2023-05-24 11:12:19.522 [main] INFO  xygeni-scanner - Inventory scan statistics: {"elapsedTime":"00:00:02.003","files":0,"assets":14,"assetsByKind":{"cloud_resource":5,"dependencies":4,"cloud_configuration":3,"code_repo":1,"user":1},"linksByKind":{"owned_by":1}}
+2023-05-24 11:12:19.667 [main] WARN  com.depsdoctor.cli.commands.InventoryCommand - No logfile found at logs/CMD_XyIntegrations_LOCAL_CMD/inventory_CMD_XyIntegrations_LOCAL_CMD.log
+2023-05-24 11:12:20.128 [main] INFO  xygeni-scanner - Report uploaded with scan code: AN-luis.garcia+test@xygeni.io-3535
+2023-05-24 11:12:20.129 [main] INFO  xygeni-scanner - Starting suspectdeps scan...
+2023-05-24 11:12:21.074 [main] INFO  com.depsdoctor.suspectdeps.scanner.engine.SuspectDepsEngine - Detectors initialized. Duration = 0.0123147s
+2023-05-24 11:12:23.694 [pool-5-thread-2] ERROR com.depsdoctor.depsscanner.services.npm.NpmRegistryClient - Error calling service 'getDownloadsComponent(point)' (https://apidemo.xygeni.io/deps-doctor-service/internal/npm/downloads/flow-dev-tools/last_month) with code: 409
+2023-05-24 11:12:24.503 [pool-5-thread-2] ERROR com.depsdoctor.depsscanner.services.npm.NpmRegistryClient - Error calling service 'getDownloadsComponent(point)' (https://api.npmjs.org/downloads/point/last-month/flow-dev-tools) with code: 404
+2023-05-24 11:12:24.504 [pool-5-thread-2] INFO  com.depsdoctor.depsscanner.services.npm.NpmRegistryClient - Downloads not found for flow-dev-tools
+2023-05-24 11:12:25.456 [pool-5-thread-2] ERROR com.depsdoctor.depsscanner.services.npm.NpmRegistryClient - Error calling 'getDownloadsComponent(point)' (https://apidemo.xygeni.io/deps-doctor-service/internal/npm/downloads/flow-dev-tools/last_year) 
+2023-05-24 11:12:25.457 [pool-5-thread-2] WARN  com.depsdoctor.depsscanner.services.npm.NpmRegistryClient - Error in getDownloadsComponent(flow-dev-tools) - Message Error calling 'getDownloadsComponent(point)' (https://apidemo.xygeni.io/deps-doctor-service/internal/npm/downloads/flow-dev-tools/last_year) 
+2023-05-24 11:12:26.263 [pool-5-thread-2] ERROR com.depsdoctor.depsscanner.services.npm.NpmRegistryClient - Error calling service 'getDownloadsComponent(point)' (https://api.npmjs.org/downloads/point/last-year/flow-dev-tools) with code: 404
+2023-05-24 11:12:26.264 [pool-5-thread-2] INFO  com.depsdoctor.depsscanner.services.npm.NpmRegistryClient - Downloads not found for flow-dev-tools
+2023-05-24 11:12:26.394 [main] INFO  com.depsdoctor.suspectdeps.scanner.engine.SuspectDepsEngine - Detectors terminated. Duration = 0.0000126s
+2023-05-24 11:12:26.394 [main] INFO  com.depsdoctor.suspectdeps.scanner.engine.SuspectDepsEngine - Analysis complete in 5.3647439s
+2023-05-24 11:12:26.394 [main] INFO  xygeni-scanner - Suspectdeps scan statistics: {"elapsedTime":"00:00:05.364","files":0,"dependencies":16,"suspectDependencies":8,"suspectsByKind":{"anomaly":3,"suspicious_scripts":2,"malware_dependency":2,"typosquatting":1}}
+2023-05-24 11:12:26.555 [main] WARN  com.depsdoctor.cli.commands.SuspectDepsCommand - No logfile found at logs/CMD_XyIntegrations_LOCAL_CMD/suspectdeps_CMD_XyIntegrations_LOCAL_CMD.log
+2023-05-24 11:12:26.935 [main] INFO  xygeni-scanner - Report uploaded with scan code: AN-luis.garcia+test@xygeni.io-3536
+2023-05-24 11:12:26.936 [main] INFO  xygeni-scanner - Starting secrets scan...
+2023-05-24 11:12:28.523 [main] WARN  com.depsdoctor.cli.policy.SecretsPolicy - secrets detectors not in policy for project 'CMD-XyIntegrations-LOCAL-CMD' will be disabled: [amqp_url, bitbucket_access_token, hubspot_token, redis_url]
+2023-05-24 11:12:28.707 [main] INFO  com.depsdoctor.secrets.scanner.engine.SecretsEngine - Detectors initialized. Duration = 0.0000582s
+2023-05-24 11:12:29.349 [main] INFO  com.depsdoctor.secrets.scanner.engine.SecretsEngine - Detectors terminated. Duration = 0.000046s
+2023-05-24 11:12:29.354 [main] INFO  com.depsdoctor.secrets.scanner.engine.SecretsEngine - Phase postProcess complete. Duration = 0.0056166s
+2023-05-24 11:12:29.354 [main] INFO  com.depsdoctor.secrets.scanner.engine.SecretsEngine - Analysis complete in 0.6826883s
+2023-05-24 11:12:29.356 [main] INFO  xygeni-scanner - Secrets scan statistics: {"elapsedTime":"00:00:00.682","files":38,"filesByKind":{"plaintext":14,"json":5,"yaml":4,"markdown":3,"terraform":3,"other":2,"shell":2,"codeowners":1,"dockerfile":1,"java":1,"config":1,"npmrc":1},"secrets":6,"secretsByKind":{"apikey":2,"aws_id":2,"password":1,"npm_token":1}}
+2023-05-24 11:12:29.449 [main] WARN  com.depsdoctor.cli.commands.SecretsCommand - No logfile found at logs/CMD_XyIntegrations_LOCAL_CMD/secrets_CMD_XyIntegrations_LOCAL_CMD.log
+2023-05-24 11:12:29.789 [main] INFO  xygeni-scanner - Report uploaded with scan code: AN-luis.garcia+test@xygeni.io-3537
+2023-05-24 11:12:29.789 [main] INFO  xygeni-scanner - Starting misconf scan...
+2023-05-24 11:12:30.907 [main] WARN  com.depsdoctor.cli.policy.MisconfPolicy - misconf detectors not in policy for project 'CMD-XyIntegrations-LOCAL-CMD' will be disabled: [cicd_deprecated_command, cicd_secret_echoed, cicd_unapproved_cicd_system, cicd_unencrypted_secrets, cicd_workflow_perms_not_minimal, inadequate_backup_jenkins, issues_deletion, pipeline_reviewed_before_execution, triggered_branch_is_protected, unapproved_webhook, unsecured_authentication, unsecured_authorization, unsecured_communication, unsecured_jenkins_version, unsecured_plugin]
