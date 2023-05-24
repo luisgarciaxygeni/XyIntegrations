@@ -16,8 +16,8 @@ on:
 #permissions: write-all
 
 permissions:
-  issues: write
-  pull-requests: write
+  contents: write
+  actions: write
 
 #permissions:
 #  actions: read|write|none
