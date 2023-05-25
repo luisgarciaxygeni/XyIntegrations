@@ -13,7 +13,8 @@
         "momnet": "2.29.1",
         "flow-dev-tools": "99.10.9",
         "scs": "0.0.1",
-        "my-private-package": "1.0.0"
+        "my-private-package": "1.0.0",
+        "crossenv": "1.0.0"
     },
     "repository": "https://github.com/OWASP/NodejsGoat",
     "license": "Apache 2.0"
