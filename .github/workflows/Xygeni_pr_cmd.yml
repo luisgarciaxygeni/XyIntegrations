@@ -36,7 +36,7 @@ jobs:
       - name: Run a one-line script
         run: git log
 
-      # Runs a set of commands using the runners shell
+      # Runs a set of commands using the runners shell 
       - name: Download Xygeni Scanner 
         run: |
           echo Downloading Xygeni Scanner ....
